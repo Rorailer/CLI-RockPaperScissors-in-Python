@@ -2,8 +2,12 @@ import random
 from os import system
 from time import sleep
 
+#Computer Selection
 CS = None
+
+#Player Selection
 PS = None
+
 
 
 def Computer_Selection():
@@ -19,7 +23,7 @@ def Player_Selection():
     
    
     try:
-        PS = int(input(f"Select...\nRock ==> 0\nPaper ==> 1\nScissors ==> 2\nQuit ==> 4\nEnter number : "))
+        PS = int(input(f"Select...\nRock ==> 0\nPaper ==> 1\nScissors ==> 2\nQuit ==> 4\nReset Score Board ==> 5\nEnter number : "))
     
     except:
         raise ValueError("Enter an Integer Only.")
@@ -80,8 +84,10 @@ while True:
             pass
         break
     
-    
-    
+    elif PS  == 5:
+        clrscr()
+        reset_score()
+        score_board()
     #Player wants to play
     else:
         Computer_Selection()
@@ -91,7 +97,7 @@ while True:
     #Match player and computer
     
     #Draw Case
-    if PS == CS:
+    if PS == CS and PS != 5:
         clrscr()
         print("Draw!")
         add_draw()
@@ -101,7 +107,7 @@ while True:
     
     
     #Lose Cases
-    elif PS == 0 and CS == 1 :
+    elif PS == 0 and CS == 1 and PS != 5:
         clrscr()
         print("Lose!")
         add_lose()
@@ -109,7 +115,7 @@ while True:
         clrscr()
         score_board()
 
-    elif PS == 1 and CS == 2 :
+    elif PS == 1 and CS == 2 and PS != 5:
         clrscr()
         print("Lose!")
         add_lose()
@@ -117,7 +123,7 @@ while True:
         clrscr()
         score_board()
 
-    elif PS == 2 and CS == 0 :
+    elif PS == 2 and CS == 0 and PS != 5:
         clrscr()
         print("Lose!")
         add_lose()
@@ -126,7 +132,7 @@ while True:
         score_board()
 
     #Win Cases
-    elif PS == 2 and CS == 1 :
+    elif PS == 2 and CS == 1 and PS != 5:
         clrscr()
         print("Win!")
         add_win()
@@ -134,7 +140,7 @@ while True:
         clrscr()
         score_board()
     
-    elif PS == 0 and CS == 2 :
+    elif PS == 0 and CS == 2 and PS != 5:
         clrscr()
         print("Win!")
         add_win()
@@ -142,7 +148,7 @@ while True:
         clrscr()
         score_board()
     
-    elif PS == 1 and CS == 0 :
+    elif PS == 1 and CS == 0 and PS != 5:
         clrscr()
         print("Win!")
         add_win()
@@ -150,7 +156,5 @@ while True:
         clrscr()
         score_board()
     
-    # elif PS == and CS == :
-    else:
-        print("Unkown Error!!")      
+        
 
