@@ -1,2 +1,6 @@
 # CLI-RockPaperScissors-in-Python
-Its just a project I did. Its a simple Rock Paper Scissors game that can store scores upto 9 (draws, wins and loses).
+This is a project I did just for learning and better understanding python.
+It is a **simple Rock, Papper and Scissors game**.
+This game can also keep score of your Wins, Losses and Draws.
+### If the score of any one of Wins, Losses or Draws goes above 9 the game will start to mess up the score.
+
