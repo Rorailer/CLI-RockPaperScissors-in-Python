@@ -9,7 +9,6 @@ CS = None
 PS = None
 
 
-
 def Computer_Selection():
     global CS
     
@@ -31,43 +30,51 @@ def Player_Selection():
     return PS        
     
 def add_draw():
+    
+    
     with open("score.txt",'r') as f:
+    
+        #Reads the score file, It has a format (draws,wins,loses)
         content = f.read()
-        f.seek(0)
-        draws = int(f.read(1))    
+    
+        #stores score as a list 
+        score = content.split(',')    
+    
+    
     with open('score.txt','w') as f:
-        f.write(content[0:0]+ str(draws+1)+'\n' + content[2:])
+        
+        #writes the score back to the file, only increases the draws by 1.
+        f.write(f"{int(score[0])+int(1)},{score[1]},{score[2]}")
 
 def add_win():
     with open("score.txt",'r') as f:
         content = f.read()
-        f.seek(2)
-        wins = int(f.read(1))  
+        score = content.split(',')
     with open('score.txt','w') as f:
-        f.write(content[0:2]+ str(wins+1) + content[3:])
+        f.write(f"{score[0]},{int(score[1])+int(1)},{score[2]}")
 
 def add_lose():
     with open("score.txt",'r') as f:
         content = f.read()
-        f.seek(4)
-        loses = int(f.read(1))   
+        score = content.split(',')  
     with open('score.txt','w') as f:
-        f.write(content[0:4]+ str(loses+1) + content[6:])
+        f.write(f"{score[0]},{score[1]},{int(score[2])+int(1)}")
 
 def reset_score():
     with open('score.txt','w') as f:
-        f.write('0\n0\n0')
+        f.write(f'{0},{0},{0}')
 
 def score_board():
     with open('score.txt','r') as f:
         score = f.read()
+        score = score.split(',')
     
-    print(f'|| Draws = {score[:1]} ||\n|| Wins = {score[2:3]} ||\n|| Loses = {score[4:5]} || ')
+    print(f'|| Draws = {score[0]} ||\n|| Wins = {score[1]} ||\n|| Loses = {score[2]} || ')
 
 def clrscr():
     system('clear')
 
-
+Score = []
 
 #Main While Loop
 while True:
@@ -78,10 +85,6 @@ while True:
     
     #Player quit
     if PS == 4:
-        try:
-            reset_score()
-        except:
-            pass
         break
     
     elif PS  == 5:
